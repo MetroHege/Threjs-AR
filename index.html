@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>3D Model Showcase</title>
+    <meta charset="utf-8" />
+    <meta name="description" content="3D Model Showcase" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="hero">
+      <h1>Welcome to the 3D Model Showcase</h1>
+      <p>Explore our collection of 3D models in augmented reality</p>
+    </div>
+    <div class="container">
+      <h2>3D Shoe Model Viewer</h2>
+      <model-viewer
+        id="shoe"
+        src="kenka.gltf"
+        ar
+        ar-modes="webxr scene-viewer quick-look"
+        camera-controls
+        tone-mapping="neutral"
+        poster="poster.webp"
+        shadow-intensity="1"
+        auto-rotate
+        alt="A 3D model of a Shoe"
+      >
+        <div class="progress-bar hide" slot="progress-bar">
+          <div class="update-bar"></div>
+        </div>
+        <button slot="ar-button" id="ar-button">View in your space</button>
+        <div id="ar-prompt">
+          <img src="ar_hand_prompt.png" />
+        </div>
+        <div class="controls">
+          <div>
+            Variant:
+            <select id="variant"></select>
+          </div>
+        </div>
+        <!-- Hotspots -->
+        <button
+          slot="hotspot-1"
+          class="hotspot"
+          data-position="0m 0.1m -0.2m"
+          data-normal="0m 1m 0m"
+        >
+          <div class="annotation">Tää on kengän tää puoli</div>
+        </button>
+        <button
+          slot="hotspot-2"
+          class="hotspot"
+          data-position="0m 0.1m 0.2m"
+          data-normal="0m 1m 0m"
+        >
+          <div class="annotation">Ja tää on tän kengän tää puoli</div>
+        </button>
+      </model-viewer>
+    </div>
+    <div class="container">
+      <h2>3D VR World</h2>
+      <!-- Placeholder for Three.js 3D VR World -->
+      <div id="vr-world" style="width: 100%; height: 500px; background: #000">
+        <!-- Three.js content will go here -->
+        <p style="color: #fff; padding: 20px">
+          Your Three.js 3D VR World will be embedded here.
+        </p>
+      </div>
+    </div>
+    <script src="script.js"></script>
+    <!-- Loads <model-viewer> for browsers: -->
+    <script
+      type="module"
+      src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"
+    ></script>
+    <!-- Include Three.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Include your Three.js script -->
+    <script src="./threejs/three-dev/js/main.js"></script>
+    <script>
+      const modelViewerVariants = document.querySelector("model-viewer#shoe");
+      const select = document.querySelector("#variant");
+
+      modelViewerVariants.addEventListener("load", () => {
+        const names = modelViewerVariants.availableVariants;
+        for (const name of names) {
+          const option = document.createElement("option");
+          option.value = name;
+          option.textContent = name;
+          select.appendChild(option);
+        }
+        // Adds a default option.
+        const option = document.createElement("option");
+        option.value = "default";
+        option.textContent = "Default";
+        select.appendChild(option);
+      });
+
+      select.addEventListener("input", (event) => {
+        modelViewerVariants.variantName =
+          event.target.value === "default" ? null : event.target.value;
+      });
+    </script>
+  </body>
+</html>

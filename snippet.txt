@@ -1,0 +1,21 @@
+<model-viewer src="kenka.gltf" ar ar-modes="webxr scene-viewer quick-look" camera-controls tone-mapping="neutral" poster="poster.webp" shadow-intensity="1" auto-rotate>
+    <button class="Hotspot" slot="hotspot-1" data-position="0.13664223134306083m 0.6129247394828847m -0.4127630464216m" data-normal="-0.6276557641107676m -0.31422142702529376m -0.7122591779519001m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Tässä on kengän tää puoli
+        </div>
+    </button><button class="Hotspot" slot="hotspot-2" data-position="0.2737366245851985m 0.5321192278598936m 0.4146626478318392m" data-normal="0.578586793889876m 0.13398306819960615m 0.8045407754564424m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Ja tässä on kengän tää puoli</div>
+    </button><button class="Hotspot" slot="hotspot-3" data-position="-1.1469044306207654m 0.4100785941673101m 0.9455848962516185m" data-normal="-0.00995130705198913m 0.7292794617698752m 0.6841435800536304m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Kengän kärki</div>
+    </button><button class="Hotspot" slot="hotspot-4" data-position="-0.32462748912723094m 0.7198320947133507m 0.3269451631900505m" data-normal="-0.6896020592334918m 0.15258329000169316m 0.707931733653173m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Nauhat</div>
+    </button>
+    <div class="progress-bar hide" slot="progress-bar">
+        <div class="update-bar"></div>
+    </div>
+    <button slot="ar-button" id="ar-button">
+        View in your space
+    </button>
+    <div id="ar-prompt">
+        <img src="https://modelviewer.dev/shared-assets/icons/hand.png">
+    </div>
+</model-viewer>
